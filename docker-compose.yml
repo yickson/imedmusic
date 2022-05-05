@@ -6,6 +6,8 @@ services:
     image: node:16
     working_dir: /app
     command: sh -c "npm rebuild esbuild && npm run dev"
+    environment:
+      - VUE_APP_BACK_URL=http://localhost:3005/
     ports:
       - '3004:3004'
     volumes:
