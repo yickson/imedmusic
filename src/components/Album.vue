@@ -58,7 +58,7 @@ export default {
         this.$emit('fav')
         this.msg = message
         this.$notify({
-          text: `Album delete ${this.msg}`,
+          text: `Album add favorites ${this.msg}`,
           type: 'success'
         });
         return;
