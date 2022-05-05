@@ -23,4 +23,5 @@ docker-compose ps
 ```
 
 La aplicación funciona por el puerto 3004
-*asegurate no tener ocupado ese puerto*
+*asegurate no tener ocupado ese puerto* y tener funcionando
+el Backend para el consumo de información
