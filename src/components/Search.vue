@@ -35,12 +35,12 @@
           md="6"
           lg="4"
           xl="4">
-        <Favorite :item="favorite"/>
+        <Favorite :item="favorite" @fav="renderFav"/>
       </v-col>
     </v-row>
     <v-row v-if="albums.length > 0" >
       <v-col cols="12">
-        <h3 class="text-center">
+        <h3 class="text-center mt-10">
           Result of search - {{ this.search }}
         </h3>
       </v-col>
@@ -52,7 +52,7 @@
           md="6"
           lg="4"
           xl="4">
-        <Favorite :item="album"/>
+        <Album :item="album" @fav="renderFav"/>
       </v-col>
     </v-row>
   </v-container>
@@ -60,10 +60,12 @@
 
 <script>
 import Favorite from "./Favorite";
+import Album from "./Album";
 
 export default {
   name: "Search",
   components: {
+    Album,
     Favorite
   },
 
@@ -73,14 +75,17 @@ export default {
     favorites: [],
     rules: [
         value => !!value || 'Required',
-        value => (value && value.length >= 4) || 'Minimun 4 characters'
+        value => (value && value.length >= 4) || 'Minimum 4 characters'
     ]
   }),
   methods: {
     async getAlbums(search) {
       const request = await fetch('http://localhost:3005/album/search', {
         method: 'POST',
-        body: { q: search}
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({q: search})
       });
       const { data } = await request.json();
       this.albums = data;
@@ -90,6 +95,11 @@ export default {
       const request = await fetch('http://localhost:3005/favorites/get');
       const { data } = await request.json();
       this.favorites = data
+    },
+
+    renderFav() {
+      console.log('renderFav');
+      this.getFavorites()
     }
   },
 

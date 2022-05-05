@@ -58,6 +58,7 @@ export default {
       })
       const { message } = await request.json()
       if (message === 'success') {
+        this.$emit('fav')
         this.msg = message
         this.$notify({
           text: `Album delete ${this.msg}`,
