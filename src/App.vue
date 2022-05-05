@@ -1,19 +1,20 @@
 <template>
   <v-app>
     <v-main>
-      <HelloWorld/>
+      <Search/>
+      <notifications position="top right" />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Search from "./components/Search.vue";
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    Search,
   },
 
   data: () => ({

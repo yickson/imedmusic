@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kyvg/vue3-notification": "^2.3.4",
     "@mdi/font": "5.9.55",
     "roboto-fontface": "*",
     "vue": "^3.2.25",
